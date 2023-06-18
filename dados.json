@@ -1,12 +1,12 @@
 {
-    "professores": [
-      {
-        "id": 2,
-        "name": "Julio",
-        "email": "julio@gmail.com",
-        "course": "DS",
-        "telefone": 11982085432,
-        "date": "2019-05-10"
-      }
-    ]
-  }
+  "professores": [
+    {
+      "id": 2,
+      "name": "Julio",
+      "email": "julio@gmail.com",
+      "course": "DS",
+      "telefone": 11982085432,
+      "date": "2019-05-10"
+    }
+  ]
+}
