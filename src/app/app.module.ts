@@ -10,6 +10,8 @@ import { ProfessoresFormComponent } from './professores-form/professores-form.co
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlunosComponent } from './alunos/alunos.component';
+import { AlunosFormComponent } from './alunos-form/alunos-form.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProfessoresComponent,
     ProfessoresFormComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    AlunosComponent,
+    AlunosFormComponent
   ],
   imports: [
     BrowserModule,

@@ -24,5 +24,31 @@
       "telefone": "11959814549",
       "date": "2005-03-03"
     }
+  ],
+  "alunos": [
+    {
+      "id": 1,
+      "name": "Carlos",
+      "email": "carlos@gmail.com",
+      "course": "DS",
+      "telefone": "1198514549",
+      "date": "2000-03-03"
+    },
+    {
+      "id": 2,
+      "name": "Ana",
+      "email": "ana@gmail.com",
+      "course": "DS",
+      "telefone": "11959594595",
+      "date": "1980-03-12"
+    },
+    {
+      "id": 3,
+      "name": "Pamela",
+      "email": "pamela@gmail.com",
+      "course": "ADM",
+      "telefone": "11951943595",
+      "date": "1986-08-09"
+    }
   ]
 }
