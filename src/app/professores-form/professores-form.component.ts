@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfessoresService } from '../professores.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Professores } from '../professores';
 
 @Component({
   selector: 'app-professores-form',
@@ -10,10 +11,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProfessoresFormComponent {
 
+  @Input()
+  professor: Professores = {} as Professores;
+
+  @Output()
+  saveEvent = new EventEmitter<Professores>();
+
   submitted : boolean = false;
   formGroupClient : FormGroup;
-  isEditing : boolean = false;
-
   constructor (private formBuilder : FormBuilder, private professoresService: ProfessoresService, private route: ActivatedRoute, private router: Router){
 
     this.formGroupClient = formBuilder.group({
@@ -26,43 +31,23 @@ export class ProfessoresFormComponent {
     });
   }
 
-  ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get("id"));
-    this.getProfessorById(id);
+  ngOnChanges(changes : SimpleChanges): void {
+    this.formGroupClient.setValue(this.professor);
   }
 
-  getProfessorById(id: number) {
-    this.professoresService.getProfessor(id).subscribe({
-      next: data =>{
-        this.formGroupClient.setValue(data);
-        this.isEditing = true;
-      }
-    });
-  }
 
   save(){
       this.submitted = true;
       if(this.formGroupClient.valid){
-        if(this.isEditing){
-          this.professoresService.update(this.formGroupClient.value).subscribe({
-            next: () => {
-              this.router.navigate(['professores']);
-          }
-        })
-      }
-
-      else {
-        this.professoresService.save(this.formGroupClient.value).subscribe({
-          next: () => {
-            this.router.navigate(['professores']);
-          }
-        })
+        this.saveEvent.emit(this.formGroupClient.value);
+        this.formGroupClient.reset;
+        this.submitted = false;
       }
     }
-  }
-
-  cancel(){
-    this.router.navigate(['professores']);
+  
+  clean(){
+    this.formGroupClient.reset();
+    this.submitted = false;
   }
 
   get name() : any {
@@ -71,6 +56,18 @@ export class ProfessoresFormComponent {
 
   get email() : any {
     return this.formGroupClient.get("email");
+  }
+
+  get course() : any {
+    return this.formGroupClient.get("course");
+  }
+
+  get telefone() : any {
+    return this.formGroupClient.get("telefone");
+  }
+
+  get date() : any {
+    return this.formGroupClient.get("date");
   }
 
 }

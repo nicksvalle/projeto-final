@@ -9,13 +9,13 @@ import { Professores } from './professores';
 export class ProfessoresService {
   url = 'http://localhost:3000/professores';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getProfessores(): Observable<Professores[]> {
     return this.http.get<Professores[]>(this.url);
   }
 
-  getProfessor(id:number){
+  getProfessor(id: number): Observable<Professores> {
     return this.http.get<Professores>(`${this.url}/${id}`);
   }
 
@@ -24,11 +24,10 @@ export class ProfessoresService {
   }
 
   update(professores: Professores): Observable<Professores> {
-    return this.http.put<Professores>(`${this.url}/${professores.id}`, professores)
+    return this.http.put<Professores>(`${this.url}/${professores.id}`, professores);
   }
 
   delete(professores: Professores): Observable<void> {
     return this.http.delete<void>(`${this.url}/${professores.id}`);
   }
-
 }

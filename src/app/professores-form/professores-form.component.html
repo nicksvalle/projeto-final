@@ -25,9 +25,39 @@
   
       </div>
 
+      <div class="mb-3">
+        <label for="course" class="form-label">Curso</label>
+        <input type="text" formControlName="course" class="form-control" id="course" placeholder="Curso">
+  
+        <div *ngIf="submitted && course.invalid">
+          <small class="text-danger">Curso Inválido!</small>
+      </div>
+  
+      </div>
+
+      <div class="mb-3">
+        <label for="telefone" class="form-label">Telefone</label>
+        <input type="tel" formControlName="telefone" class="form-control" id="telefone" placeholder="Email">
+  
+        <div *ngIf="submitted && telefone.invalid">
+          <small class="text-danger">Telefone Inválido!</small>
+      </div>
+
+      <div class="mb-3">
+        <label for="date" class="form-label">Data de nascimento</label>
+        <input type="date" formControlName="date" class="form-control" id="email" placeholder="Data de nascimento">
+  
+        <div *ngIf="submitted && date.invalid">
+          <small class="text-danger">Data de nascimento Inválido!</small>
+      </div>
+  
+      </div>
+  
+      </div>
+
       <div class="mb-3 d-flex justify-content-end">
         <button type="button" class="btn btn-dark" (click)="save()">Salvar</button>
-        <button type="button" class="btn btn-dark" (click)="cancel()">Voltar</button>
+        <button type="button" class="btn btn-dark" (click)="clean()">Excluir</button>
       </div>
     </form>
   

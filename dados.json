@@ -6,7 +6,23 @@
       "email": "julio@gmail.com",
       "course": "DS",
       "telefone": 11982085432,
-      "date": "2019-05-10"
+      "date": "2006-05-10"
+    },
+    {
+      "id": 3,
+      "name": "Nicolas Valle",
+      "email": "nicolasdeoliveiravalle@gmail.com",
+      "course": "ADM",
+      "telefone": "11959811195",
+      "date": "2005-06-06"
+    },
+    {
+      "id": 4,
+      "name": "Kaue",
+      "email": "kaue@gmail.com",
+      "course": "DS",
+      "telefone": "11959814549",
+      "date": "2005-03-03"
     }
   ]
 }

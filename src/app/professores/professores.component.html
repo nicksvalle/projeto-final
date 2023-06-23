@@ -1,10 +1,11 @@
-<button class="btn btn-dark m-3" (click)="create()">Novo</button>
+<app-professores-form [professor]="professor" (saveEvent)="OnSaveEvent($event)"></app-professores-form>
 <table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Nome</th>
-      <th scope="col">Course</th>
+      <th scope="col">Email</th>
+      <th scope="col">Curso</th>
       <th scope="col">Telefone</th>
       <th scope="col">Data de Nascimento</th>
     </tr>
@@ -13,9 +14,10 @@
     <tr *ngFor="let professores of professores" >
       <th scope="row">{{professores.id}}</th>
       <td>{{professores.name}}</td>
+      <td>{{professores.email}}</td>
       <td>{{professores.course }}</td>
       <td>{{professores.telefone }}</td>
-      <td>{{professores.date }}</td>
+      <td>{{professores.date | date:"MM/dd/yy" }}</td>
       <td>
         <button type="button" class="btn btn-dark me-1" (click)="edit(professores)" >Editar</button>
         <button type="button" class="btn btn-dark" (click)="delete(professores)">Excluir</button>

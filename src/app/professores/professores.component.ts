@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class ProfessoresComponent implements OnInit {
 
   professores: Professores[] = [];
+  professor : Professores = {} as Professores;
   isEditing: boolean = false;
 
   constructor(private professoresService: ProfessoresService, private formBuilder : FormBuilder, private router: Router){
@@ -29,13 +30,33 @@ export class ProfessoresComponent implements OnInit {
     );
   }
 
-  create(){
-    this.router.navigate(['createProfessores'])
-   }
+  OnSaveEvent(professores: Professores){
+    if(this.isEditing)
+    {
+      this.professoresService.update(professores).subscribe(
+        {
+          next: () => {
+            this.loadProfessores();
+            this.isEditing = false;
+          }
+        }
+      )
+    }
+    else{
+      this.professoresService.save(professores).subscribe(
+        {
+          next: data => {
+            this.professores.push(data);
+          }
+        }
+        );
+    }
+ }
    
-   edit(professores: Professores){
-    this.router.navigate(['professoresDetails', professores.id])
-   }
+    edit(professores : Professores){
+      this.professor = professores;
+      this.isEditing = true;
+    }
 
    delete(professores: Professores){
     this.professoresService.delete(professores).subscribe(
